@@ -1,0 +1,49 @@
+<mat-toolbar>
+  <h1>CALORIE APP</h1>
+</mat-toolbar>
+<div class="centered-content">
+  <div class="tdee">
+    <mat-card>
+      <mat-card-title>TDEE</mat-card-title>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>Weight</mat-label>
+          <input matInput #weight [(ngModel)]="tdee.weight" type="number" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Body Fat</mat-label>
+          <input matInput #bodyFat [(ngModel)]="tdee.bodyFat" type="number" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Activity Level</mat-label>
+          <mat-select [(ngModel)]="tdee.activity">
+            <mat-option
+              [value]="activity.val"
+              *ngFor="let activity of activityLevel"
+              #activity
+              >{{ activity.viewValue }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <div class="result">
+          <mat-form-field appearance="outline">
+            <mat-label>TDEE</mat-label>
+            <input [(ngModel)]="tdee.tdeeVal" matInput type="text" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>BMR</mat-label>
+            <input [(ngModel)]="tdee.bmr" matInput type="text" />
+          </mat-form-field>
+        </div>
+        <div class="button">
+          <button mat-raised-button color="primary" (click)="calculate()">
+            CALCULATE
+          </button>
+          <button mat-raised-button color="warn" (click)="resetForm()">
+            RESET
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
