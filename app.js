@@ -15,9 +15,8 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  next();
+  next();   
 });
-
 app.get("/tdee", (req, res) => {
   Tdee.find({}).then((val) => {
     res.send(val);
