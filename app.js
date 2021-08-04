@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const { mongoose } = require("./database/mongoose");
-const { Tdee } = require("./database/model/tdeeModel");
+const { mongoose } = require("./Backend/database/mongoose");
+const { Tdee } = require("./Backend/database/model/tdeeModel");
 
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
