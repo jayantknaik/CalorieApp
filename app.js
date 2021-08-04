@@ -47,8 +47,8 @@ app.listen(process.env.port || 3000, () => {
   console.log("Server is listening on port 3000");
 });
 
-app.use(express.static('./dist/Frontend'));
+app.use(express.static(__dirname + './dist/Frontend'));
 
-app.get('/*', function (request, response) {
-    response.sendFile(path.join(__dirname, '/dist/Frontend/index.html'));
+app.get('/', function (request, response) {
+    response.sendFile(path.join(__dirname + '/dist/Frontend/index.html'));
 });
