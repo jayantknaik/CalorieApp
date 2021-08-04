@@ -17,6 +17,7 @@ app.use(function (req, res, next) {
   );
   next();   
 });
+
 app.get("/tdee", (req, res) => {
   Tdee.find({}).then((val) => {
     res.send(val);
@@ -44,4 +45,10 @@ app.post("/tdee", (req, res) => {
 
 app.listen(process.env.port || 3000, () => {
   console.log("Server is listening on port 3000");
+});
+
+app.use(express.static('./dist/Frontend'));
+
+app.get('/*', function (request, response) {
+    response.sendFile(path.join(__dirname, '/dist/Frontend/index.html'));
 });
