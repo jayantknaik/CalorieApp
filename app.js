@@ -5,11 +5,6 @@ const { mongoose } = require("./Backend/database/mongoose");
 const { Tdee } = require("./Backend/database/model/tdeeModel");
 const path = require('path');
 const port = process.env.PORT || 3000;
-const MongoClient = require("mongodb").MongoClient;
- const client = await new MongoClient(process.env.MONGODB_URI,{ useNewUrlParser: true});
- client.connect();
-mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
-mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err); });
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:4200"); // update to match the domain you will make the request from
