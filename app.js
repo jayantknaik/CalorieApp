@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const { mongoose } = require("./Backend/database/mongoose");
 const { Tdee } = require("./Backend/database/model/tdeeModel");
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -42,9 +43,9 @@ app.post("/tdee", (req, res) => {
       console.log(e);
     });
 });
-
-app.listen(process.env.port || 3000, () => {
-  console.log("Server is listening on port 3000");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
 
 app.use(express.static(__dirname + './dist/Frontend'));

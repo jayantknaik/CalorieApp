@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost:27017/CalorieApp", {
+  .connect("mongodb+srv://Jayant:jayantknaik@cluster0.f4lrn.mongodb.net/CalorieApp", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
