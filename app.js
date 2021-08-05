@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const { mongoose } = require("./Backend/database/mongoose");
 const { Tdee } = require("./Backend/database/model/tdeeModel");
 const path = require('path');
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -19,13 +20,13 @@ app.use(function (req, res, next) {
   next();   
 });
 
-app.get("/tdee", (req, res) => {
+app.get("/tdees", (req, res) => {
   Tdee.find({}).then((val) => {
     res.send(val);
   });
 });
 
-app.post("/tdee", (req, res) => {
+app.post("/tdees", (req, res) => {
   let weight = req.body.weight;
   let bodyFat = req.body.bodyFat;
   let activity = req.body.activity;
@@ -43,7 +44,7 @@ app.post("/tdee", (req, res) => {
       console.log(e);
     });
 });
-const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });

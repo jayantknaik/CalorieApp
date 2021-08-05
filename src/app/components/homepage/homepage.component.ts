@@ -17,6 +17,7 @@ export class HomepageComponent implements OnInit {
   ];
   tdee: any = [];
   result: any;
+  payload: any;
   constructor(private tdeeService: TdeeService) {}
 
   ngOnInit(): void {
@@ -32,12 +33,16 @@ export class HomepageComponent implements OnInit {
     };
   }
   calculate() {
-    this.result = this.tdeeService.getResult(
+    this.tdeeService.getResult(
       this.tdee.weight,
       this.tdee.bodyFat,
       this.tdee.activity
-    );
-    this.tdee.tdeeVal = this.result.TDEE;
-    this.tdee.bmr = this.result.BMR;
+    ).subscribe((res)=>{
+      this.payload = res;
+      let bmr = 21.6 * (this.payload.weight - (this.payload.bodyFat / 100) * this.payload.weight) + 370;
+      let tdee = bmr * this.payload.activity;
+      this.tdee.tdeeVal = tdee;
+      this.tdee.bmr = bmr;
+    });
   }
 }
