@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb+srv://Jayant:jayantknaik@cluster0.f4lrn.mongodb.net/CalorieApp", {
+  .connect(process.env.MONGODB_URI || "mongodb+srv://Jayant:jayantknaik@cluster0.a9plg.mongodb.net/", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
