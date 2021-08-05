@@ -1,8 +1,9 @@
 // This file will handle connection logic to MongoDB database
 
 const mongoose = require("mongoose");
+const connection = "mongodb+srv://Jayant:jayantknaik@cluster0.a9plg.mongodb.net/CalorieApp?retryWrites=true&w=majority";
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb+srv://Jayant:jayantknaik@cluster0.a9plg.mongodb.net/", {
+  .connect(connection, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
