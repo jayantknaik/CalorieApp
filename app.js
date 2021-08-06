@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
 const { mongoose } = require("./Backend/database/mongoose");
 const { Tdee } = require("./Backend/database/model/tdeeModel");
 const port = process.env.PORT || 3000;              
